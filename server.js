@@ -26,9 +26,10 @@ mongoose
   })
   .then(() => console.log('DB connection successful'));
 
-const server = app.listen(1500, () => {
+const port = process.env.PORT || 1500;
+const server = app.listen(port, () => {
   console.log(
-    'Listening for your commands in ' + process.env.NODE_ENV + ' mode sir...'
+    `Listening for your commands in ${process.env.NODE_ENV} mode sir...`
   );
 });
 
