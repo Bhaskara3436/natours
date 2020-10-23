@@ -4,6 +4,14 @@ const catchAsync = require('../utils/catchAsync');
 // eslint-disable-next-line import/no-useless-path-segments
 const AppError = require('./../utils/appError');
 
+exports.alerts = (req, res, next) => {
+  const { alert } = req.query;
+  if (alert === 'booking')
+    res.locals.alert =
+      "Your booking was successful ! Please check your mail for confirmation. If your booking doesn't show up here immediately, please come back later.";
+  next();
+};
+
 exports.getOverview = catchAsync(async (req, res, next) => {
   // 1) Get tour data from collection
   const tours = await Tour.find();
